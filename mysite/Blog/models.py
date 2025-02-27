@@ -10,6 +10,7 @@ class PublishedManager(models.Manager):
         )
 
 class Post(models.Model):
+    
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
@@ -45,5 +46,6 @@ class Post(models.Model):
     
     def get_absolute_url(self):
         return reverse(
-            'post_detail'
+            'post_detail',
+            args = [self.id]
         )
